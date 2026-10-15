@@ -57,3 +57,13 @@ section:nth-of-type(4n) :is(.sec-head:not(.sec-head--row), .dhead, .mg-h, .sol-h
   .hx-proj__in, .sol-hero__in, .lg-terms .wrap > :is(small, h1, p) { text-align: left; }
   .hx-proj h1, .hx-proj small, .sol-hero h1, .sol-hero p, .hx-proj__lead, .hx-proj__f, .sol-hero__a, .sol-arc { margin-left: 0; justify-content: flex-start; }
 }
+
+/* images keep rounded corners: photos, illustrations, video and the cards or frames built around them */
+img, picture, video, iframe, .pic, .ph, .vid__f,
+.kstory__m, .kb-tp__m, .help__media, .alt__m, .phero__main, .photo, .kb-card__m, .card__m,
+.card, .kstory, .svc__c, .in-c, .pj-c, .prf__c, .teaser, .person, .mos a,
+.dstage, .dstack, .sol-kit, .sol-how__m > div, .hx-story__ph, .hx-svc__pv, .hx-car__fan figure, .hx-about__film li,
+.mg-bento > div, .mg-tiles li.has-img, .hx-mast__m, .hx-ind__p a, .dai-ai__m img, .kh__card, .kh__cimg { border-radius: var(--pr, 14px) !important; }
+.hx-ind__p a { border-radius: 0 !important; }
+.kh__cimg { border-radius: var(--pr, 14px) var(--pr, 14px) 0 0 !important; }
+.khero__ph, .cine, .cine__img, .hx-sec, .hx-proj, .sol-hero, .cx-photo { border-radius: 0 !important; }
