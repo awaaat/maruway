@@ -1,0 +1,78 @@
+// Only facts from the old site are used. Add outcomes and client permission before expanding.
+// `image` is the file name (without extension) in src/assets/img/projects/.
+// Projects whose photo is missing show a labelled placeholder until you add the file.
+
+export const PROJECTS = [
+  {
+    slug: 'kajiado-radio-receiver',
+    title: 'Radio receiver assembly for the LMSC Giga project',
+    place: 'Iltareto Comprehensive, Kajiado Central',
+    service: 'telecom-iot',
+    image: 'kajiado-radio-receiver',
+    summary: 'Assembly of the radio receiver at the school site as part of the LMSC Giga project.',
+    scope: ['Radio receiver assembly', 'On-site equipment installation'],
+  },
+  {
+    slug: 'server-room-maintenance',
+    title: 'Routine maintenance in a server room',
+    place: 'Nairobi',
+    service: 'managed-it',
+    image: 'server-room-maintenance',
+    summary: 'Maruway engineers carrying out routine maintenance on equipment racks and cabling.',
+    scope: ['Rack and cabling checks', 'Routine equipment maintenance'],
+  },
+  {
+    slug: 'manhole-maintenance',
+    title: 'Chamber and cable maintenance',
+    place: 'Nairobi',
+    service: 'network-infrastructure',
+    image: 'manhole-maintenance',
+    summary: 'Technician managing and maintaining cables in an underground chamber.',
+    scope: ['Outside-plant inspection', 'Cable management and maintenance'],
+  },
+  {
+    slug: 'safety-signage',
+    title: 'Safety signage installation',
+    place: 'Famguard',
+    service: 'cctv-access-control',
+    image: 'safety-signage',
+    summary: 'Warning and restricted-area signs fitted by the Maruway team.',
+    scope: ['Safety and restricted-area signage'],
+  },
+  {
+    slug: 'cctv-maintenance-checks',
+    title: 'CCTV maintenance checks',
+    place: 'Airtel',
+    service: 'cctv-access-control',
+    image: 'cctv-maintenance-checks',
+    summary: 'The Maruway team carrying out scheduled CCTV maintenance checks.',
+    scope: ['Camera and recorder checks', 'Scheduled maintenance'],
+  },
+  {
+    slug: 'ceiling-speakers',
+    title: 'Ceiling speaker installation',
+    place: 'Nairobi',
+    service: 'public-address-audio',
+    image: 'ceiling-speakers',
+    summary: 'Ceiling speakers installed for a public address system.',
+    scope: ['Ceiling speaker installation', 'Cable routing'],
+  },
+  {
+    slug: 'wall-speakers',
+    title: 'Wall speaker installation',
+    place: 'Nairobi',
+    service: 'public-address-audio',
+    image: 'wall-speakers',
+    summary: 'Wall-mounted speakers installed for a public address system.',
+    scope: ['Wall speaker installation'],
+  },
+  {
+    slug: 'radio-receiver-alignment',
+    title: 'Radio receiver alignment and installation',
+    place: 'Field site',
+    service: 'telecom-iot',
+    image: 'radio-receiver-alignment',
+    summary: 'Alignment and installation of a radio receiver.',
+    scope: ['Receiver alignment', 'Installation'],
+  },
+];

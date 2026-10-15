@@ -1,0 +1,40 @@
+/* Photograph styling: one grade, one crop focus, one frame, one quiet hover. */
+:root { --pr: 14px; --pfocus: 50% 24%; }
+
+/* Real photographs: warm-neutral grade and a crop that keeps heads in frame (tall subjects were being cut off). */
+img.pic--photo { object-position: var(--pfocus); filter: saturate(.92) contrast(1.04) brightness(1.01); }
+.khero__ph { background-position: center 26%; filter: saturate(.92) contrast(1.04); }
+.mega__feat img, .kh__cimg img { object-position: var(--pfocus); }
+
+/* Frames: same radius and a hairline on every photograph container. */
+.kstory__m, .kb-tp__m, .help__media, .alt__m, .phero__main, .photo, .kb-card__m, .card__m { position: relative; overflow: hidden; }
+.kstory__m, .kb-tp__m, .help__media, .alt__m, .phero__main, .photo { border-radius: var(--pr); }
+.kb-two img, .kb-sticky__l img, .prf__c img, .in-c img, .pj-c img, .mos img, .kb-os__m img { border-radius: var(--pr); }
+.kstory__m::after, .kb-tp__m::after, .help__media::after, .alt__m::after, .phero__main::after, .photo::after, .kb-card__m::after, .card__m::after {
+  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; border-radius: inherit;
+  background: linear-gradient(180deg, transparent 58%, rgba(6, 11, 22, .32));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1);
+}
+/* Illustrations get a clean frame instead of a scrim. */
+.kstory__m:has(.is-dai)::after, .kb-tp__m:has(.is-dai)::after, .help__media:has(.is-dai)::after, .alt__m:has(.is-dai)::after,
+.phero__main:has(.is-dai)::after, .photo:has(.is-dai)::after, .kb-card__m:has(.is-dai)::after, .card__m:has(.is-dai)::after,
+.kstory__m:has(.is-art)::after, .alt__m:has(.is-art)::after, .card__m:has(.is-art)::after, .kb-card__m:has(.is-art)::after {
+  background: none; box-shadow: inset 0 0 0 1px rgba(8, 18, 40, .08);
+}
+
+/* Quieter hover: 3 per cent, not 7. */
+.card:hover .card__m img, .in-c:hover img, .kstory:hover .kstory__m img, .prf__c:hover img, .svc__c:hover .bg img, .pj-lead:hover img, .story:hover img { transform: scale(1.03); }
+.svc__c .bg img.pic--photo { opacity: .62; }
+
+/* Placeholder plate, replacing the dashed box. */
+.ph { border: 0; border-radius: var(--pr); color: #7a849c; font-size: .74rem; letter-spacing: .04em; background: linear-gradient(135deg, #eef1f5, #dfe5ee); }
+
+/* Data and AI illustrations: lit stage, never cropped. */
+img.is-dai { object-fit: contain !important; background: #fff; padding: 6%; box-sizing: border-box; border-radius: var(--pr); }
+img.is-dai--bleed { object-fit: cover !important; padding: 0; background: #6a24a8; }
+.card__m img.is-dai, .kstory__m img.is-dai, .kb-card__m img.is-dai, .kb-tp__m img.is-dai, .help__media img.is-dai { border-radius: 0; }
+.svc__c .bg img.is-dai { opacity: .97; object-position: center 24%; background: linear-gradient(160deg, #fff, #f9f7f4); }
+.svc__c:hover .bg img.is-dai { opacity: 1; }
+.kb-tiles a img.is-dai { mix-blend-mode: normal; opacity: .16; padding: 14%; background: none; }
+.kb-cons__m img.is-dai { box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .6); }
+.in-c img.is-dai, .in-lead__a img.is-dai { aspect-ratio: 16 / 10; }
