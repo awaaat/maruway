@@ -19,7 +19,7 @@ export default function Projects() {
   return (
     <>
       <Seo title="Our work" path="/projects" description="Field work by Maruway engineers: server rooms, chambers, CCTV, signage and public address." />
-      <ProjectsHero lead={list[0]} f={f} setF={setF} used={used} />
+      <ProjectsHero lead={list.find((x) => x.image !== 'server-room-maintenance') || list[0]} f={f} setF={setF} used={used} />
       <section className="pj-feed skin-cinema"><div className="wrap">
         <div className="pj-grid">{rest.map((p, n) => (<Reveal key={p.slug} delay={n * 60}><Link to={`/projects/${p.slug}`} className="pj-c"><Picture folder="projects" name={p.image} alt={p.title} width={800} height={600} /><small>{p.place}</small><h3>{p.title}</h3></Link></Reveal>))}</div>
       </div></section>

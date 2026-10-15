@@ -1,8 +1,8 @@
 /* Refinement layer, loaded last.
    1. Corners are almost square.  2. Headings are smaller.  3. Heading alignment varies down the page. */
 
-/* 1. Corners: 2px everywhere. A few decorative circles keep their shape. */
-*, *::before, *::after { border-radius: 2px !important; }
+/* 1. Corners: 6px on boxes and buttons, 10px on images. A few decorative circles keep their shape. */
+*, *::before, *::after { border-radius: 6px !important; }
 .hx-sup__n i, .vid__p, .cx-door::after, .mg-who a::after, .cx-hours__map circle, .dstage__ring, .med__n circle { border-radius: 50% !important; }
 
 /* 2. Type scale. Headings were up to 11rem; they are now calm and readable. */
@@ -28,12 +28,9 @@ h3 { font-size: clamp(1.05rem, 1.5vw, 1.3rem) !important; line-height: 1.25 !imp
 :is(.sec-head, .dhead, .mg-h, .sol-h) { max-width: 760px; }
 section:nth-of-type(4n+2) :is(.sec-head:not(.sec-head--row), .dhead, .mg-h, .sol-h) { margin-inline: auto; text-align: center; }
 section:nth-of-type(4n+2) :is(.sec-head, .dhead, .mg-h, .sol-h) p { margin-inline: auto; }
-section:nth-of-type(4n+3) :is(.sec-head:not(.sec-head--row), .dhead, .mg-h, .sol-h) { margin-left: auto; text-align: right; }
-section:nth-of-type(4n+3) :is(.sec-head, .dhead, .mg-h, .sol-h) p { margin-left: auto; }
 section:nth-of-type(4n) :is(.sec-head:not(.sec-head--row), .dhead, .mg-h, .sol-h) { margin-left: clamp(0px, 10vw, 150px); }
 /* Giant-word sections: centred, then right, then left */
 .kb-gw:nth-of-type(3n+2) .wrap > div:first-child, .kb-gw:nth-of-type(3n+2) .kb-gw__w, .kb-gw:nth-of-type(3n+2) .kb-gw__s { text-align: center; }
-.kb-gw:nth-of-type(3n) .wrap > div:first-child, .kb-gw:nth-of-type(3n) .kb-gw__w, .kb-gw:nth-of-type(3n) .kb-gw__s { text-align: right; }
 .dhead--w, .dsec--navy .dhead { max-width: 760px; }
 
 /* Heroes: some are centred or right-aligned instead of always starting at the left edge */
@@ -42,11 +39,10 @@ section:nth-of-type(4n) :is(.sec-head:not(.sec-head--row), .dhead, .mg-h, .sol-h
 .hx-ind__h .kcrumb, .ctx-top .kcrumb { justify-content: center; }
 .ctx-chips, .hx-svc small { justify-content: center; text-align: center; }
 .lg-priv svg { margin-inline: auto; } .lg-priv__s { text-align: left; }
-.lg-terms .wrap > :is(small, h1, p), .lg-terms .kcrumb { text-align: right; }
-.hx-proj__in { text-align: right; }
-.hx-proj h1, .hx-proj small { margin-left: auto; }
-.hx-proj__lead, .hx-proj__f { margin-left: auto; justify-content: flex-end; }
-.sol-hero__in { text-align: right; } .sol-hero h1, .sol-hero p { margin-left: auto; } .sol-hero__a { justify-content: flex-end; } .sol-arc { margin-left: auto; }
+
+
+
+
 .mg-hero__t { text-align: left; }
 .dhome__t { text-align: left; }
 .hx-sec__in { text-align: center; } .hx-sec h1, .hx-sec p { margin-inline: auto; } .hx-sec__s { justify-content: center; }
@@ -67,3 +63,17 @@ img, picture, video, iframe, .pic, .ph, .vid__f,
 .hx-ind__p a { border-radius: 0 !important; }
 .kh__cimg { border-radius: var(--pr, 14px) var(--pr, 14px) 0 0 !important; }
 .khero__ph, .cine, .cine__img, .hx-sec, .hx-proj, .sol-hero, .cx-photo { border-radius: 0 !important; }
+
+/* image corner size */
+:root { --pr: 10px; }
+
+/* hx-proj hero placement: text sits bottom-left on a dark veil so the photograph's subject stays visible on the right */
+.hx-proj__veil { background: linear-gradient(90deg, rgba(4, 7, 14, .88) 0%, rgba(4, 7, 14, .5) 42%, rgba(4, 7, 14, .05) 72%), linear-gradient(to top, rgba(4, 7, 14, .9), transparent 55%) !important; }
+.hx-proj__in > * { max-width: 560px; }
+.hx-proj__in { text-align: left; }
+.hx-proj h1 { max-width: 12ch; }
+.hx-proj__lead { flex-direction: column; align-items: flex-start; gap: 6px; max-width: 460px; }
+.hx-proj__f { justify-content: flex-start; max-width: 640px; }
+.sol-hero__in { text-align: left; }
+
+/* headings: centred or left, never right */
