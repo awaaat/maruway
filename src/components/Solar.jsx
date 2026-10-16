@@ -89,8 +89,8 @@ export default function SolarPage({ s }) {
         <Reveal><Sizer /></Reveal>
       </div></section>
 
-      <section id="parts" className="sol-sec"><div className="wrap sol-parts">
-        <Reveal className="sol-parts__m"><div className="sol-kit"><img src={img('solar', 'kit')} alt="Batteries, inverters and monocrystalline solar panels" loading="lazy" /></div></Reveal>
+      <section id="parts" className="sol-sec"><div className="wrap sol-parts sol-parts--solo">
+        
         <Reveal>
           <small>The three parts</small><h2>Panels, inverter, battery.</h2>
           <div className="sol-tabs" role="tablist">{PARTS.map(([t], i) => <button key={t} role="tab" aria-selected={part === i} className={part === i ? 'is-on' : ''} onClick={() => setPart(i)}>{t}</button>)}</div>

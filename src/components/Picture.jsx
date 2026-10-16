@@ -1,15 +1,17 @@
 import { useMemo } from 'react';
-import { resolveImg, keptArt, isDai, daiBleed, photoNames } from '../lib/assets';
+import { resolveImg, keptArt, isDai, daiBleed, photoNames, ART_PHOTO } from '../lib/assets';
 import { CAP, claim, used, leastUsed } from '../lib/balance';
 
 // Decides what a slot actually shows.
 // Photos are counted per route and decorative slots are rebalanced once a photo hits its cap.
-// A project photo whose file does not exist is replaced by one that does, so no "Photo to be added" box appears.
+// An old illustration slot gets its mapped real photo (ART_PHOTO) while that photo is under the cap.
 function choose(folder, name, decorative) {
   if (folder === 'art' && !isDai(name) && !keptArt(name)) {
     const pool = photoNames();
     if (!pool.length) return { folder: 'art', name, kind: 'none' };
-    return { folder: 'projects', name: claim(leastUsed(pool)), kind: 'photo' };
+    const want = ART_PHOTO[name];
+    const pick = want && pool.includes(want) && used(want) < CAP ? want : leastUsed(pool);
+    return { folder: 'projects', name: claim(pick), kind: 'photo' };
   }
   if (folder === 'art') return { folder, name, kind: isDai(name) ? (daiBleed(name) ? 'bleed' : 'dai') : 'ill' };
   if (folder === 'projects') {

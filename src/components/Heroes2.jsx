@@ -16,15 +16,16 @@ const MOTIF = {
 };
 export function SectorHero({ x, col, svcs }) {
   return (
-    <section className="hx-sec" style={{ '--c': col }}>
-      <Cine name={x.img} variant="b" /><div className="hx-sec__veil" />
-      <svg className="hx-sec__m" viewBox="0 0 300 150" aria-hidden="true">{MOTIF[x.slug]}</svg>
-      <div className="wrap hx-sec__in">
-        <nav className="kcrumb is-light"><Link to="/">Home</Link> / <Link to="/industries">Industries</Link> / <span>{x.name}</span></nav>
-        <small>Industry</small>
-        <Words text={x.name} />
-        <p>{x.lead}</p>
-        <div className="hx-sec__s">{svcs.map((s) => <Link key={s.slug} to={`/services/${s.slug}`}>{s.title}<Icon name="arrow" size={14} /></Link>)}</div>
+    <section className="sx-hero" style={{ '--c': col }}>
+      <div className="wrap sx-hero__g">
+        <div className="sx-hero__t">
+          <nav className="kcrumb"><Link to="/">Home</Link> / <Link to="/industries">Industries</Link> / <span>{x.name}</span></nav>
+          <small>Industry</small>
+          <h1>{x.name}</h1>
+          <p>{x.lead}</p>
+          <div className="sx-hero__s">{svcs.map((s) => <Link key={s.slug} to={`/services/${s.slug}`}>{s.title}<Icon name="arrow" size={14} /></Link>)}</div>
+        </div>
+        <figure className="sx-hero__f"><Picture folder="projects" name={x.img} alt="" width={1200} height={900} eager /></figure>
       </div>
     </section>
   );

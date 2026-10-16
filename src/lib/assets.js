@@ -14,9 +14,21 @@ export function img(folder, name) {
   return hit ? files[hit] : null;
 }
 
-// Hand-drawn illustrations that stay as they are.
-const KEEP = new Set(['network-layers', 'network-rack', 'cctv-plan', 'access-door', 'pa-coverage', 'pa-zones', 'telecom-link']);
+// No drawn illustrations are kept any more: every "art" slot shows a real photograph.
+const KEEP = new Set();
 export const keptArt = (n) => KEEP.has(n);
+
+// Which real photo (src/assets/img/projects/<name>) stands in for each old illustration slot.
+// Drop better photos into that folder with the same file name to upgrade a slot.
+export const ART_PHOTO = {
+  'network-layers': 'manhole-maintenance',
+  'network-rack': 'server-room-maintenance',
+  'cctv-plan': 'cctv-maintenance-checks',
+  'access-door': 'safety-signage',
+  'pa-coverage': 'ceiling-speakers',
+  'pa-zones': 'wall-speakers',
+  'telecom-link': 'radio-receiver-alignment',
+};
 
 // Data and AI imagery lives in assets/img/dai and is addressed as "dai-<file>".
 // The old generic data pictures are redirected so no page needs editing.

@@ -82,7 +82,7 @@ export default function ContactForm() {
   return (
     <form className="form" onSubmit={onSubmit} noValidate>
       <fieldset className="urgency">
-        <legend>What do you need?</legend>
+        <legend>Type of request</legend>
         <div>
           {URGENCY.map((u) => (
             <label key={u.v} className={values.urgency === u.v ? 'chip is-on' : 'chip'}>
