@@ -146,7 +146,7 @@ main:focus { outline: none; }
 .htab + .htab::before { left: 0; }
 .htab i { position: absolute; top: -1px; left: 0; height: 2px; width: 0; background: var(--accent); }
 .htab.is-on { color: #fff; }
-.htab.is-on i { animation: fill var(--dur, 7s) linear forwards; }
+.htab.is-on i { animation: fill var(--dur, 25s) linear forwards; }
 .hero.is-paused .htab.is-on i { animation-play-state: paused; }
 @keyframes fill { to { width: 100%; } }
 .hero__ctl { position: absolute; right: var(--gut); bottom: 104px; display: flex; gap: 8px; z-index: 2; }

@@ -22,7 +22,7 @@ import { reduced } from '../lib/motion';
 const svcImg = (s) => (s.projects || []).find((n) => img('projects', n)) || null;
 
 const heroImg = (s) => img('projects', s.photo) || img('projects', 'radio-receiver-alignment') || img('projects', 'ceiling-speakers');
-const DUR = 7000;
+const DUR = 25000;
 const STEPS = [
   ['Tell us', 'Call, WhatsApp or send a request. Say where you are and what has stopped.'],
   ['We diagnose', 'The support desk checks what it can remotely and decides who to send.'],

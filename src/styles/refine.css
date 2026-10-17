@@ -333,3 +333,86 @@ img, picture, video, iframe, .pic, .ph, .vid__f,
 .sx-hero__f { margin: 0; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px !important; background: #e4e1d8; box-shadow: 0 30px 60px -40px rgba(20, 24, 42, .5); }
 .sx-hero__f img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; border-radius: 0 !important; }
 @media (max-width: 900px) { .sx-hero__g { grid-template-columns: 1fr; } .sx-hero__f { order: -1; max-height: 340px; } }
+
+/* ===== Photo motion: no light sweep, images move in all directions ===== */
+.cine__sweep, .khero__s.is-on::before { display: none !important; }
+
+/* bigger bleed so the wider movement never shows an edge */
+.cine__img, .khero__ph { inset: -22%; }
+
+@keyframes cineA {
+  0%   { transform: perspective(1400px) translate3d(2.5%, 1.5%, 0) scale(1.06) rotateZ(-1deg) rotateX(1.5deg) rotateY(-2.5deg); }
+  50%  { transform: perspective(1400px) translate3d(-1%, -2.5%, 0) scale(1.15) rotateZ(1deg) rotateX(-1deg) rotateY(1.5deg); }
+  100% { transform: perspective(1400px) translate3d(-4%, 1.5%, 0) scale(1.24) rotateZ(2.2deg) rotateX(1.5deg) rotateY(3deg); }
+}
+@keyframes cineB {
+  0%   { transform: perspective(1400px) translate3d(-3.5%, 2%, 0) scale(1.24) rotateZ(1.6deg) rotateX(-1.5deg) rotateY(3deg); }
+  50%  { transform: perspective(1400px) translate3d(1%, 2.5%, 0) scale(1.14) rotateZ(-1deg) rotateX(1deg) rotateY(-1.5deg); }
+  100% { transform: perspective(1400px) translate3d(3.5%, -2%, 0) scale(1.06) rotateZ(-2deg) rotateX(-1deg) rotateY(-3deg); }
+}
+@keyframes cineC {
+  0%, 100% { transform: perspective(1400px) translate3d(-2%, 1.5%, 0) scale(1.08) rotateZ(-2deg) rotateX(1.5deg) rotateY(-3deg); }
+  25%  { transform: perspective(1400px) translate3d(2.5%, -1.5%, 0) scale(1.17) rotateZ(0deg) rotateX(-1.5deg) rotateY(0deg); }
+  50%  { transform: perspective(1400px) translate3d(3%, 2%, 0) scale(1.24) rotateZ(2deg) rotateX(1deg) rotateY(3deg); }
+  75%  { transform: perspective(1400px) translate3d(-1%, 2.5%, 0) scale(1.15) rotateZ(0deg) rotateX(-1.5deg) rotateY(0deg); }
+}
+
+/* faster loops */
+.cine__img { animation-duration: 15s, 9s; }
+.cine--b .cine__img { animation-duration: 17s, 9s; }
+.cine--c .cine__img { animation-duration: 20s, 9s; }
+.khero__s.is-on .khero__ph { animation-duration: 15s; }
+.khero__s.is-on[data-p='jade'] .khero__ph { animation-duration: 20s; }
+
+/* photos that sit inside a frame get a gentler move so their corners never show */
+@keyframes cineSoft {
+  0%   { transform: translate3d(2%, 1%, 0) scale(1.08) rotate(-1deg); }
+  50%  { transform: translate3d(-1%, -1.5%, 0) scale(1.17) rotate(.6deg); }
+  100% { transform: translate3d(-3%, 1%, 0) scale(1.26) rotate(1.4deg); }
+}
+.phero--photo .phero__bg img,
+.phero--split .phero__main img, .phero--flip .phero__main img { animation-name: cineSoft; animation-duration: 18s; }
+
+/* ===== Compass-route photo motion (E / W / N / S), tilting toward each heading ===== */
+@keyframes cineA {   /* E -> W -> N -> S -> E */
+  0%, 100% { transform: perspective(1400px) translate3d(7%, 0, 0) scale(1.2) rotateY(3deg) rotateZ(-.8deg); }
+  25% { transform: perspective(1400px) translate3d(-7%, 0, 0) scale(1.26) rotateY(-3deg) rotateZ(.8deg); }
+  50% { transform: perspective(1400px) translate3d(0, -6%, 0) scale(1.2) rotateX(2.5deg) rotateZ(1.6deg); }
+  75% { transform: perspective(1400px) translate3d(0, 6%, 0) scale(1.26) rotateX(-2.5deg) rotateZ(-1.2deg); }
+}
+@keyframes cineB {   /* N -> S -> W -> E -> N */
+  0%, 100% { transform: perspective(1400px) translate3d(0, -6%, 0) scale(1.2) rotateX(2.5deg) rotateZ(1deg); }
+  25% { transform: perspective(1400px) translate3d(0, 6%, 0) scale(1.26) rotateX(-2.5deg) rotateZ(-1.4deg); }
+  50% { transform: perspective(1400px) translate3d(-7%, 0, 0) scale(1.2) rotateY(-3deg) rotateZ(.8deg); }
+  75% { transform: perspective(1400px) translate3d(7%, 0, 0) scale(1.26) rotateY(3deg) rotateZ(-1deg); }
+}
+@keyframes cineC {   /* W -> N -> E -> S -> W */
+  0%, 100% { transform: perspective(1400px) translate3d(-7%, 0, 0) scale(1.2) rotateY(-3deg) rotateZ(-1deg); }
+  25% { transform: perspective(1400px) translate3d(0, -6%, 0) scale(1.26) rotateX(2.5deg) rotateZ(1.2deg); }
+  50% { transform: perspective(1400px) translate3d(7%, 0, 0) scale(1.2) rotateY(3deg) rotateZ(.8deg); }
+  75% { transform: perspective(1400px) translate3d(0, 6%, 0) scale(1.26) rotateX(-2.5deg) rotateZ(-1deg); }
+}
+/* photos inside a frame (no bleed): same route, smaller steps so corners never show */
+@keyframes cineSoft {
+  0%, 100% { transform: translate3d(3.5%, 0, 0) scale(1.2) rotate(-.6deg); }
+  25% { transform: translate3d(-3.5%, 0, 0) scale(1.24) rotate(.6deg); }
+  50% { transform: translate3d(0, -3%, 0) scale(1.2) rotate(1deg); }
+  75% { transform: translate3d(0, 3%, 0) scale(1.24) rotate(-.8deg); }
+}
+
+/* play the route once around, then repeat (no back-and-forth) */
+.cine__img, .cine--b .cine__img, .cine--c .cine__img { animation-direction: normal, normal; }
+.cine__img { animation-duration: 20s, 9s; }
+.cine--b .cine__img { animation-duration: 22s, 9s; }
+.cine--c .cine__img { animation-duration: 24s, 9s; }
+.khero__s.is-on .khero__ph { animation-direction: normal; animation-duration: 20s; }
+.khero__s.is-on[data-p='jade'] .khero__ph { animation-duration: 24s; }
+.phero--photo .phero__bg img,
+.phero--split .phero__main img, .phero--flip .phero__main img { animation-direction: normal; animation-duration: 24s; }
+
+
+
+/* ===== Photo motion v8: photos rest still; JS plays an occasional random move ===== */
+.cine, .khero__s, .phero__bg, .phero__main { perspective: 1800px; perspective-origin: 50% 50%; }
+.cine__img, .khero__ph { inset: -22%; transform-origin: 50% 50%; backface-visibility: visible; will-change: transform; animation: none !important; }
+.phero--photo .phero__bg img, .phero--split .phero__main img, .phero--flip .phero__main img { transform-origin: 50% 50%; animation: none !important; }
